@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Thymeleaf + Layui 示例</title>
+  <!-- 引入 Layui 样式和脚本 -->
+  <link rel="stylesheet" href="https://www.layui.com/dist/css/layui.css">
+  <script src="https://www.layui.com/layui.js"></script>
+
+  <!-- 本地引入 Layui 样式和脚本 -->
+<!--  <link rel="stylesheet" href="/layui/layui.css">-->
+<!--  <script src="/layui/layui.js"></script>-->
+
+  <!-- 使用 th:href 和 th:src 动态引入资源 -->
+<!--  <link rel="stylesheet" th:href="@{/layui/layui.css}">-->
+<!--  <script th:src="@{/layui/layui.js}"></script>-->
+
+</head>
+<body>
+<div class="layui-container">
+  <!-- 示例：使用 Layui 表单发起 POST 请求 -->
+  <form class="layui-form" id="postForm">
+    <div class="layui-form-item">
+      <label class="layui-form-label">姓名</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" required lay-verify="required" placeholder="请输入姓名" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button type="button" class="layui-btn" onclick="sendPostRequest()">提交</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- 示例：点击按钮发起 GET 请求 -->
+  <button class="layui-btn" onclick="sendGetRequest()">获取用户信息</button>
+
+  <!-- 显示返回数据 -->
+  <div id="result" class="layui-container"></div>
+</div>
+
+<script>
+  // 发送 POST 请求
+  function sendPostRequest() {
+    var formData = new FormData(document.getElementById('postForm'));
+    fetch('/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('result').innerHTML = '提交成功，服务器返回: ' + JSON.stringify(data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  // 发送 GET 请求
+  function sendGetRequest() {
+    fetch('/user/info')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('result').innerHTML = '用户信息: ' + JSON.stringify(data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+</script>
+</body>
+</html>

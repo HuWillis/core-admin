@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- login登录页面 -->
+  <title>login</title>
+  <!--引用该 layui.css 地址 -->
+  <link href="../../static/layui/css/layui.css" rel="stylesheet">
+</head>
+
+<body>
+<style>
+
+  /* 全局背景动态效果 */
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #ADD8E6, #00BFFF);
+    background-size: 200% 200%;
+    animation: backgroundShift 10s ease infinite;
+  }
+
+  /* 动态背景动画 */
+  @keyframes backgroundShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* 居中的登录框样式 */
+  .login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    margin: 0;
+    background-color: #fff;  /* 背景色 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* 添加阴影 */
+  }
+
+  .login-other .layui-icon {
+    position: relative;
+    display: inline-block;
+    margin: 0 2px;
+    top: 2px;
+    font-size: 26px;
+  }
+</style>
+
+<form class="layui-form">
+  <div class="login-container">
+    <div class="layui-form-item">
+      <!-- 输入框容器，使用layui的样式类 -->
+      <div class="layui-input-wrap">
+        <!-- 输入框前缀图标容器 -->
+        <div class="layui-input-prefix">
+          <!-- 手机图标，使用layui的图标类 -->
+          <i class="layui-icon layui-icon-cellphone"></i>
+        </div>
+        <!--
+        定义一个文本输入框，用于用户输入手机号
+        - name="phone": 设置输入框的名称为 "phone"
+        - lay-verify="required|phone": 使用 Layui 验证规则，标记此输入框为必填项，并进行手机号格式验证
+        - placeholder="手机号": 输入框为空时显示的提示文字
+        - lay-reqtext="请填写手机号": 当输入框未填写且提交时显示的错误提示信息
+        - autocomplete="off": 禁用浏览器自动填充功能
+        - class="layui-input": 应用 Layui 的样式类
+        - lay-affix="clear": 提供清除输入框内容的功能（如输入框右侧的清除按钮）
+        -->
+        <input type="text" name="phone" value="" lay-verify="required" placeholder="手机号"
+               lay-reqtext="请填写手机号" autocomplete="off" class="layui-input" lay-affix="clear">
+
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <div class="layui-input-wrap">
+        <div class="layui-input-prefix">
+          <i class="layui-icon layui-icon-password"></i>
+        </div>
+        <input type="password" name="password" value="" lay-verify="required" placeholder="密   码"
+               lay-reqtext="请填写密码" autocomplete="off" class="layui-input" lay-affix="eye">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <!-- 行布局开始 -->
+      <div class="layui-row">
+        <!-- 左侧列，占7份 -->
+        <div class="layui-col-xs7">
+          <!-- 输入框包裹 -->
+          <div class="layui-input-wrap">
+            <!-- 输入框前缀图标 -->
+            <div class="layui-input-prefix">
+              <i class="layui-icon layui-icon-vercode"></i>
+            </div>
+            <!-- 验证码输入框 -->
+            <input type="text" name="captcha" value="" lay-verify="required" placeholder="验证码"
+                   lay-reqtext="请填写验证码" autocomplete="off" class="layui-input"
+                   lay-affix="clear">
+          </div>
+        </div>
+        <!-- 右侧列，占5份 -->
+        <div class="layui-col-xs5">
+          <!-- 验证码图片 -->
+          <div style="margin-left: 10px;">
+            <img src="https://www.oschina.net/action/user/captcha"
+                 onclick="this.src='https://www.oschina.net/action/user/captcha?t='+ new Date().getTime();">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <!-- 用户可以选择这个复选框来请求系统记住其登录密码 -->
+      <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
+      <!-- 提供了一个链接，引导用户到密码找回页面 -->
+      <a href="#forget" style="float: right; margin-top: 7px;">忘记密码？</a>
+    </div>
+
+    <div class="layui-form-item">
+      <!--
+      提交按钮，用于触发登录事件。
+      - 类 `layui-btn` 和 `layui-btn-fluid` 用于美化按钮样式。
+      - 属性 `lay-submit` 标识这是一个表单提交按钮。
+      - 属性 `lay-filter="demo-login"` 指定触发事件的过滤器名称，这里为 "login"。
+      -->
+      <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="login">登录</button>
+    </div>
+
+    <div class="layui-form-item login-other">
+      <label>社交账号登录</label>
+      <span style="padding: 0 21px 0 6px;">
+        <a href="javascript:;">
+          <i class="layui-icon layui-icon-login-qq" style="color: #3492ed;"></i>
+        </a>
+        <a href="javascript:;">
+          <i class="layui-icon layui-icon-login-wechat" style="color: #4daf29;"></i>
+        </a>
+        <a href="javascript:;">
+          <i class="layui-icon layui-icon-login-weibo" style="color: #cf1900;"></i>
+        </a>
+      </span>
+      或 <a href="#reg">注册帐号</a>
+    </div>
+  </div>
+</form>
+<!-- 引入外部JS文件 -->
+<script src="../../static/js/auth/login.js"></script>
+<script src="../../static/layui/layui.js"></script>
+</body>
+</html>

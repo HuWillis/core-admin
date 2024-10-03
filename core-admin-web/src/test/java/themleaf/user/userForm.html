@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>用户表单</title>
+  <link rel="stylesheet" th:href="@{/layui/layui.css}">
+  <script th:src="@{/layui/layui.js}"></script>
+</head>
+<body>
+<div class="layui-container">
+  <form class="layui-form" style="padding: 20px;">
+    <div class="layui-form-item">
+      <label class="layui-form-label">姓名</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" id="name" required lay-verify="required" placeholder="请输入姓名" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">邮箱</label>
+      <div class="layui-input-block">
+        <input type="text" name="email" id="email" required lay-verify="required" placeholder="请输入邮箱" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">电话</label>
+      <div class="layui-input-block">
+        <input type="text" name="phone" id="phone" required lay-verify="required" placeholder="请输入电话" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="saveUser">保存</button>
+        <button type="button" class="layui-btn layui-btn-primary" onclick="location.href='userList.html'">取消</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- 引入模块化 JS -->
+<script th:src="@{/js/userForm.js}"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>用户管理</title>
+  <link rel="stylesheet" th:href="@{/layui/layui.css}">
+  <script th:src="@{/layui/layui.js}"></script>
+</head>
+<body>
+<div class="layui-container">
+  <table id="userTable" lay-filter="userTable"></table>
+  <script type="text/html" id="actionBar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+  </script>
+  <button class="layui-btn" onclick="location.href='userForm.html'">新增用户</button>
+</div>
+
+<!-- 引入模块化 JS -->
+<script th:src="@{/js/userList.js}"></script>
+</body>
+</html>
