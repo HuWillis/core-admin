@@ -15,6 +15,6 @@ public class IndexController {
 
     @GetMapping({"/index/login", "/login", "/"})
     public String loginIndex() {
-        return "login";
+        return "auth/login";
     }
 }
