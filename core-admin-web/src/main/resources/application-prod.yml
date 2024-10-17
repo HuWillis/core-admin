@@ -1,0 +1,37 @@
+# 端口
+server:
+  port: 10001
+  servlet:
+    context-path: /core-admin
+
+# 生产环境配置
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: 123456
+          url: jdbc:mysql://127.0.0.1:3306/core_admin?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true # MySQL Connector/J 8.X 连接的示例
+        oracle:
+          username: root
+          password: 123456
+          driver-class-name: oracle.jdbc.driver.OracleDriver
+          url: jdbc:oracle:thin:@localhost:1521/core_admin
+        sqlServer:
+          username: sa
+          password: 123456
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://localhost:1433;databaseName=core_admin
+
+file:
+  #文件上传目录 绝对路径 末尾请加 /
+  path: F:/files/ #windows
+  #path: /data/files/ #linux
+
+knife4j:
+  production: true #生成环境禁用查看文档

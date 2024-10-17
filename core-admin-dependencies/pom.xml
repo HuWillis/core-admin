@@ -20,6 +20,20 @@
 
     <revision>1.0-SNAPSHOT</revision>
     <spring.boot.version>2.7.18</spring.boot.version>
+    <fastjson.version>1.2.83</fastjson.version>
+
+    <druid.version>1.1.10</druid.version>
+    <mysql.version>8.0.26</mysql.version>
+    <mybatis-plus.version>3.4.0</mybatis-plus.version>
+    <mybatis-plus-dynamic.version>4.3.0</mybatis-plus-dynamic.version>
+    <ojdbc6.version>12.1.0.1-atlassian-hosted</ojdbc6.version>
+    <sqlserver.version>4.0</sqlserver.version>
+
+    <knife4j.version>4.3.0</knife4j.version>
+    <sa-token.version>1.38.0</sa-token.version>
+    <easy-excel.version>3.3.3</easy-excel.version>
+    <hutool.version>5.8.9</hutool.version>
+    <mapstruct.version>1.5.5.Final</mapstruct.version>
   </properties>
 
   <dependencyManagement>
@@ -32,6 +46,102 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+      <!--数据源-->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+      <!--数据库持久化 及 插件依赖-->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+        <version>${mybatis-plus-dynamic.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc6</artifactId>
+        <version>${ojdbc6.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>sqljdbc4</artifactId>
+        <version>${sqlserver.version}</version>
+      </dependency>
+
+      <!--fastJson-->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+
+      <!--knife4j-->
+      <dependency>
+        <groupId>com.github.xiaoymin</groupId>
+        <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+        <version>${knife4j.version}</version>
+      </dependency>
+
+      <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
+      <dependency>
+        <groupId>cn.dev33</groupId>
+        <artifactId>sa-token-spring-boot-starter</artifactId>
+        <version>${sa-token.version}</version>
+      </dependency>
+      <!-- 在 thymeleaf 标签中使用 Sa-Token -->
+      <dependency>
+        <groupId>cn.dev33</groupId>
+        <artifactId>sa-token-dialect-thymeleaf</artifactId>
+        <version>${sa-token.version}</version>
+      </dependency>
+
+      <!-- 请使用最新版本 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>easyexcel</artifactId>
+        <version>${easy-excel.version}</version>
+      </dependency>
+
+      <!-- 请检查最新版本 -->
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct</artifactId> <!-- use mapstruct-jdk8 for Java 8 or higher -->
+        <version>${mapstruct.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct-jdk8</artifactId>
+        <version>${mapstruct.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct-processor</artifactId>
+        <version>${mapstruct.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
