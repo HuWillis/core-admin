@@ -35,7 +35,8 @@ mybatis-plus:
       # 逻辑未删除值(默认为 0)
       logic-not-delete-value: 0
       logic-delete-field: deleted
-    banner: false # 关闭控制台的 Banner 打印
+    # 关闭控制台的 Banner 打印
+    banner: true
   type-aliases-package: ${project.base-package}.module.dao
   mapper-locations: classpath:mapper/${project.database}/**/*.xml,classpath:mapper/*.xml
   encryptor:

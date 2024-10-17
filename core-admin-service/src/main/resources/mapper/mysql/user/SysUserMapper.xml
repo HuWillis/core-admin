@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.core.admin.mapper.user.SysUserMapper">
+
+  <!-- 基础映射，定义 SysUser 的所有字段 -->
+  <resultMap id="BaseResultMap" type="com.example.core.admin.domain.po.user.SysUser">
+    <id column="user_id" property="userId"/>
+    <result column="username" property="username"/>
+    <result column="salt" property="salt"/>
+    <result column="password" property="password"/>
+    <result column="nickname" property="nickname"/>
+    <result column="remark" property="remark"/>
+    <result column="dept_id" property="deptId"/>
+    <result column="post_ids" property="postIds"/>
+    <result column="email" property="email"/>
+    <result column="mobile" property="mobile"/>
+    <result column="sex" property="sex"/>
+    <result column="avatar" property="avatar"/>
+    <result column="status" property="status"/>
+    <result column="login_ip" property="loginIp"/>
+    <result column="login_date" property="loginDate"/>
+    <result column="creator" property="creator"/>
+    <result column="create_id" property="createId"/>
+    <result column="create_time" property="createTime"/>
+    <result column="update_id" property="updateId"/>
+    <result column="updater" property="updater"/>
+    <result column="update_time" property="updateTime"/>
+    <result column="deleted" property="deleted"/>
+    <result column="tenant_id" property="tenantId"/>
+  </resultMap>
+
+  <!-- 查询用户详情 -->
+  <select id="selectUserById" resultMap="BaseResultMap">
+    SELECT user_id,
+           username,
+           salt,
+           password,
+           nickname,
+           remark,
+           dept_id,
+           post_ids,
+           email,
+           mobile,
+           sex,
+           avatar,
+           status,
+           login_ip,
+           login_date,
+           creator,
+           create_id,
+           create_time,
+           update_id,
+           updater,
+           update_time,
+           deleted,
+           tenant_id
+    FROM sys_user
+    WHERE id = #{id}
+  </select>
+
+</mapper>
