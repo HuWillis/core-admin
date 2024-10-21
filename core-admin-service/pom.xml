@@ -74,6 +74,17 @@
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct-processor</artifactId>
     </dependency>
+
+    <!-- thymeleaf支持 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <!-- web支持 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

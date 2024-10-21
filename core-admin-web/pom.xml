@@ -24,16 +24,6 @@
       <version>${revision}</version>
     </dependency>
 
-    <!-- thymeleaf支持 -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    <!-- web支持 -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
     <!-- 测试支持 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

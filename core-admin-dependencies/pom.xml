@@ -30,6 +30,7 @@
     <sqlserver.version>4.0</sqlserver.version>
 
     <knife4j.version>4.3.0</knife4j.version>
+    <springdoc.version>1.6.15</springdoc.version>
     <sa-token.version>1.38.0</sa-token.version>
     <easy-excel.version>3.3.3</easy-excel.version>
     <hutool.version>5.8.9</hutool.version>
@@ -98,6 +99,12 @@
         <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
         <version>${knife4j.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-ui</artifactId>
+        <version>${springdoc.version}</version>
+      </dependency>
+
 
       <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
       <dependency>

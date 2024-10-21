@@ -1,9 +1,14 @@
 package com.example.core.admin.service.user;
 
 
+import com.example.core.admin.common.po.PageResult;
 import com.example.core.admin.domain.dto.user.SysUserDTO;
+import com.example.core.admin.domain.dto.user.SysUserPageDTO;
 import com.example.core.admin.domain.vo.user.SysUserVO;
 import java.util.List;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -16,41 +21,42 @@ import java.util.List;
 public interface ISysUserService {
 
     /**
-     * 获取用户列表
+     * 分页查询用户列表
      *
+     * @param pageDTO 分页参数
      * @return 用户列表
      */
-    List<SysUserVO> listUsers();
+    PageResult<SysUserVO> page(SysUserPageDTO pageDTO);
 
     /**
-     * 根据ID获取用户详情
+     * 根据用户ID查询用户信息
      *
      * @param id 用户ID
-     * @return 用户详情
+     * @return 用户信息
      */
-    SysUserVO getUserById(String userId);
+    SysUserVO get(@NotNull(message = "id不能为空") String id);
 
     /**
      * 新增用户
      *
-     * @param userDTO 用户数据传输对象
+     * @param userDTO 用户信息
      * @return 是否成功
      */
-    boolean addUser(SysUserDTO userDTO);
+    Boolean save(@Valid SysUserDTO userDTO);
 
     /**
-     * 更新用户
+     * 更新用户信息
      *
-     * @param userDTO 用户数据传输对象
+     * @param userDTO 用户信息
      * @return 是否成功
      */
-    boolean updateUser(SysUserDTO userDTO);
+    Boolean update(@Valid SysUserDTO userDTO);
 
     /**
-     * 删除用户
+     * 删除用户信息
      *
-     * @param id 用户ID
+     * @param ids 用户ID列表
      * @return 是否成功
      */
-    boolean deleteUser(String userId);
+    Boolean remove(@NotEmpty(message = "ids不能为空") List<String> ids);
 }

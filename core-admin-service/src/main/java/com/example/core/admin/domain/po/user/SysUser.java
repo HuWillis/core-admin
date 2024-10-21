@@ -3,8 +3,12 @@ package com.example.core.admin.domain.po.user;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.example.core.admin.common.po.BasePO;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * @author hy
@@ -14,8 +18,11 @@ import lombok.Data;
  * @date 2024-10-17 16:35:45 16:35
  */
 @Data
-@TableName("sys_user")
-public class SysUser {
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@TableName(value = "sys_user", autoResultMap = true)
+public class SysUser extends BasePO {
 
     /**
      * 用户ID
@@ -92,45 +99,5 @@ public class SysUser {
      * 最后登录时间
      */
     private Date loginDate;
-
-    /**
-     * 创建者
-     */
-    private String creator;
-
-    /**
-     * 创建人ID
-     */
-    private String createId;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新者
-     */
-    private String updater;
-
-    /**
-     * 更新人ID
-     */
-    private String updateId;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 是否删除
-     */
-    private Boolean deleted;
-
-    /**
-     * 租户编号
-     */
-    private Long tenantId;
 }
 

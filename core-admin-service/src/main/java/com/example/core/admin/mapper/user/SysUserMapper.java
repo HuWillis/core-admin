@@ -1,10 +1,14 @@
 package com.example.core.admin.mapper.user;
 
 
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.core.admin.domain.dto.user.SysUserPageDTO;
 import com.example.core.admin.domain.po.user.SysUser;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -15,16 +19,24 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2024-10-17 16:46:32 16:46
  */
 @Mapper
-@ApiModel(description = "用户信息表数据库操作接口")
+@Schema(description = "用户信息表数据库操作接口")
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
+
     /**
-     * 自定义方法的示例，查询指定用户ID的用户信息
+     * 分页查询用户信息
      *
-     * @param userId 用户ID
-     * @return 用户信息
+     * @param pageDTO 分页参数
+     * @return 分页结果
      */
-    @ApiModelProperty(value = "根据用户ID查询用户信息", example = "1")
-    SysUser selectUserById(String userId);
+    default IPage<SysUser> page(SysUserPageDTO pageDTO) {
+        Page<SysUser> page = new Page<>(pageDTO.getPageNo(), pageDTO.getPageSize());
+        return selectPage(page, new LambdaQueryWrapper<SysUser>()
+            .like(StrUtil.isNotBlank(pageDTO.getUsername()), SysUser::getUsername, pageDTO.getUsername())
+            .like(StrUtil.isNotBlank(pageDTO.getNickname()), SysUser::getNickname, pageDTO.getNickname())
+            .like(StrUtil.isNotBlank(pageDTO.getMobile()), SysUser::getMobile, pageDTO.getMobile())
+            .like(StrUtil.isNotBlank(pageDTO.getEmail()), SysUser::getEmail, pageDTO.getEmail())
+        );
+    }
 }
 
