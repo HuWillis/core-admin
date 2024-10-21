@@ -1,6 +1,9 @@
 package com.example.core.admin.service.user.impl;
 
+import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.example.core.admin.common.exception.ServiceErrorCodeConstants;
+import com.example.core.admin.common.exception.ServiceException;
 import com.example.core.admin.common.po.PageResult;
 import com.example.core.admin.domain.convert.user.SysUserConvert;
 import com.example.core.admin.domain.dto.user.SysUserDTO;
@@ -98,6 +101,9 @@ public class SysUserServiceImpl implements ISysUserService {
     @Override
     public SysUserVO login(SysUserDTO userDTO) {
         String mobile = userDTO.getMobile();
-        return null;
+        SysUser po = mapper.selectByMobile(mobile);
+        Assert.notNull(po, () -> new ServiceException(ServiceErrorCodeConstants.USER_NOT_FOUND));
+
+        return SysUserConvert.INSTANCE.poToVo(po);
     }
 }

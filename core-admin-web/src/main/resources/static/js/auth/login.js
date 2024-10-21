@@ -4,15 +4,18 @@ layui.use(function () {
 
 
   form.on('submit(login)', function (data) {
-    var field = data.field; // 获取表单字段值
+    // 获取表单字段值
+    var field = data.field;
     // 显示填写结果，仅作演示用
     layer.alert(JSON.stringify(field), {
       title: '当前填写的字段值'
     });
-    postRequest("/api/auth/login", field,function () {
+    postRequest("/core-admin//auth/login/login", field,function () {
 
     })
-    return false; // 阻止默认 form 跳转
+    // 阻止默认 form 跳转
+    return false;
 
   });
 })
+

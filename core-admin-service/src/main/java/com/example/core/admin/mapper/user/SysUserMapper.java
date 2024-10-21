@@ -38,5 +38,18 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
             .like(StrUtil.isNotBlank(pageDTO.getEmail()), SysUser::getEmail, pageDTO.getEmail())
         );
     }
+
+    /**
+     * 根据手机号查询用户信息
+     *
+     * @param mobile 手机号
+     * @return 用户信息
+     */
+    default SysUser selectByMobile(String mobile){
+        return selectOne(new LambdaQueryWrapper<SysUser>()
+            .eq(SysUser::getMobile, mobile)
+            .last("limit 1")
+        );
+    }
 }
 

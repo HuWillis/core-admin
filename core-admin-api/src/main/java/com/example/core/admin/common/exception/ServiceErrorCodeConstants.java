@@ -29,5 +29,6 @@ package com.example.core.admin.common.exception;
  */
 public interface ServiceErrorCodeConstants {
     // 模块 system 错误码区间 [1-002-000-000 ~ 1-003-000-000)
+    ErrorCode USER_NOT_FOUND = new ErrorCode(1001001001, "用户不存在");
 
 }
