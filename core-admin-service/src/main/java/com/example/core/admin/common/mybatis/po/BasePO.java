@@ -1,4 +1,4 @@
-package com.example.core.admin.common.po;
+package com.example.core.admin.common.mybatis.po;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

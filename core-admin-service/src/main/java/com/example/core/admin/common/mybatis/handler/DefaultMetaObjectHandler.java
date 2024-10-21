@@ -4,7 +4,7 @@ import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.example.core.admin.common.mybatis.context.TenantContext;
-import com.example.core.admin.common.po.BasePO;
+import com.example.core.admin.common.mybatis.po.BasePO;
 import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;

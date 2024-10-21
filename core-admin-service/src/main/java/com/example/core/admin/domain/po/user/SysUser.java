@@ -3,7 +3,7 @@ package com.example.core.admin.domain.po.user;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.example.core.admin.common.po.BasePO;
+import com.example.core.admin.common.mybatis.po.BasePO;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
