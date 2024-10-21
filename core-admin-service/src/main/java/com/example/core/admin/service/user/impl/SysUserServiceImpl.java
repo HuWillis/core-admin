@@ -88,4 +88,16 @@ public class SysUserServiceImpl implements ISysUserService {
     public Boolean remove(List<String> ids) {
         return mapper.deleteBatchIds(ids) > 0;
     }
+
+    /**
+     * 用户登录
+     *
+     * @param userDTO 用户信息
+     * @return 用户信息
+     */
+    @Override
+    public SysUserVO login(SysUserDTO userDTO) {
+        String mobile = userDTO.getMobile();
+        return null;
+    }
 }

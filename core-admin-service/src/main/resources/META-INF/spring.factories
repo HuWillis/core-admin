@@ -1,0 +1,8 @@
+# org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+# com.example.core.admin.common.spring.spi.CoreSpringBootPatternServiceImpl
+
+# ????
+# org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+# com.example.core.admin.common.spring.spi.CoreSpringBootPatternServiceImpl,\
+# com.example.spi.impl.AnotherPatternServiceImpl
+

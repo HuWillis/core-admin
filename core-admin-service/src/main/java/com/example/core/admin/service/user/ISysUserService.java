@@ -59,4 +59,12 @@ public interface ISysUserService {
      * @return 是否成功
      */
     Boolean remove(@NotEmpty(message = "ids不能为空") List<String> ids);
+
+    /**
+     * 用户登录
+     *
+     * @param userDTO 用户信息
+     * @return 用户信息
+     */
+    SysUserVO login(SysUserDTO userDTO);
 }
