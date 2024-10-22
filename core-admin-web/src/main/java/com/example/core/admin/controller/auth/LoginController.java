@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,7 @@ public class LoginController {
      * @return 用户详情
      */
     @Operation(summary = "获取用户详情")
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Result<SysUserVO> login(@RequestBody SysUserDTO userDTO) {
         return Result.success(service.login(userDTO));
     }

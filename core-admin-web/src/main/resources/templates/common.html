@@ -1,0 +1,23 @@
+<!-- layout.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manager</title>
+  <!-- 引入公共的 CSS 文件 -->
+  <link th:href="@{/lib/layui-v2.9.18/layui/css/layui.css}" rel="stylesheet" media="all">
+</head>
+<body>
+<!-- 页面内容 -->
+<script th:src="@{/lib/layui-v2.9.18/layui/layui.js}" charset="utf-8"></script>
+<script th:src="@{/js/common/commonApi.js}" charset="utf-8"></script>
+<script th:src="@{/js/common/request.js}" charset="utf-8"></script>
+
+</body>
+</html>
+
+<!--定义跟路径-->
+<script th:inline="javascript" type="text/javascript">
+  var ctx = '[[@{/}]]'.replaceAll("\"", "").replace('//', '/');
+  var $ = layui.jquery;
+</script>
