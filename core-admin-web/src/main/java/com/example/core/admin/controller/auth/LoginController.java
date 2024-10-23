@@ -34,6 +34,7 @@ public class LoginController {
     @Operation(summary = "获取用户详情")
     @PostMapping("/login")
     public Result<SysUserVO> login(@RequestBody SysUserDTO userDTO) {
-        return Result.success(service.login(userDTO));
+//        return Result.success(service.login(userDTO));
+        return Result.success(null);
     }
 }

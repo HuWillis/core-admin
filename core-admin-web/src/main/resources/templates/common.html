@@ -10,7 +10,6 @@
 <body>
 <!-- 页面内容 -->
 <script th:src="@{/lib/layui-v2.9.18/layui/layui.js}" charset="utf-8"></script>
-<script th:src="@{/js/common/commonApi.js}" charset="utf-8"></script>
 <script th:src="@{/js/common/request.js}" charset="utf-8"></script>
 
 </body>
@@ -18,6 +17,7 @@
 
 <!--定义跟路径-->
 <script th:inline="javascript" type="text/javascript">
-  var ctx = '[[@{/}]]'.replaceAll("\"", "").replace('//', '/');
+  var ctx = '[[@{/}]]'.replaceAll("\"", "").replace('//', '/').slice(0, -1);
+
   var $ = layui.jquery;
 </script>

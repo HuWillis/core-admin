@@ -95,7 +95,7 @@
 
 
 <script>
-    layui.use(['form','commonApi'], function () {
+    layui.use(['form'], function () {
         var form = layui.form,
             layer = layui.layer;
 
@@ -127,13 +127,18 @@
                 return false;
             }
 
-            request.post('/auth/login/login1', data, function(response) {
-                console.log('POST响应:', response);
-                if (response.code == 500) {
-                    layer.msg('请求冲突，请检查您的数据！', { icon: 2 });
-                } else {
-                    // 其他自定义处理
-                    layer.msg('发生了一个非默认的错误！', { icon: 2 });
+            request.post('/auth/login/login', data, function(response) {
+                if (response.code === 200) {
+                    layer.msg('登录成功', {
+                        icon: 1,
+                        time: 1000,
+                        offset: 't',
+                        success: function () {
+                            setTimeout(function () {
+                                window.location.href = ctx + '/index';
+                            }, 1000);
+                        }
+                    });
                 }
             });
 

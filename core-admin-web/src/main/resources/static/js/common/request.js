@@ -1,18 +1,18 @@
 // request.js
-layui.use(['jquery'], function() {
+layui.use(['jquery'], function () {
   var $ = layui.jquery;
 
   // 封装GET请求
   function get(url, params, callback) {
     $.ajax({
-      url: url,
+      url: ctx + url,
       type: 'GET',
       data: params,
-      success: function(response) {
-        if (callback) callback(response);
+      success: function (response) {
+        handleAjaxSuccess(response, callback);
       },
-      error: function(xhr, status, error) {
-        handleAjaxError(xhr, status, error);
+      error: function (xhr, status, error) {
+        handleAjaxError(xhr, status, error, url);
       }
     });
   }
@@ -20,15 +20,15 @@ layui.use(['jquery'], function() {
   // 封装POST请求
   function post(url, data, callback) {
     $.ajax({
-      url: url,
+      url: ctx + url,
       type: 'POST',
       data: JSON.stringify(data),
       contentType: 'application/json',
-      success: function(response) {
-        if (callback) callback(response);
+      success: function (response) {
+        handleAjaxSuccess(response, callback);
       },
-      error: function(xhr, status, error) {
-        handleAjaxError(xhr, status, error);
+      error: function (xhr, status, error) {
+        handleAjaxError(xhr, status, error, url);
       }
     });
   }
@@ -36,15 +36,15 @@ layui.use(['jquery'], function() {
   // 封装PUT请求
   function put(url, data, callback) {
     $.ajax({
-      url: url,
+      url: ctx + url,
       type: 'PUT',
       data: JSON.stringify(data),
       contentType: 'application/json',
-      success: function(response) {
-        if (callback) callback(response);
+      success: function (response) {
+        handleAjaxSuccess(response, callback);
       },
-      error: function(xhr, status, error) {
-        handleAjaxError(xhr, status, error);
+      error: function (xhr, status, error) {
+        handleAjaxError(xhr, status, error, url);
       }
     });
   }
@@ -52,30 +52,56 @@ layui.use(['jquery'], function() {
   // 封装DELETE请求
   function del(url, callback) {
     $.ajax({
-      url: url,
+      url: ctx + url,
       type: 'DELETE',
-      success: function(response) {
-        if (callback) callback(response);
+      success: function (response) {
+        handleAjaxSuccess(response, callback);
       },
-      error: function(xhr, status, error) {
-        handleAjaxError(xhr, status, error);
+      error: function (xhr, status, error) {
+        handleAjaxError(xhr, status, error, url);
       }
     });
   }
 
+  // 统一处理AJAX成功
+  function handleAjaxSuccess(response, callback) {
+    if (response.code !== 200) {
+      layer.msg(response.msg, {
+        icon: 2,
+        time: 1000,
+        offset: 'rt',
+        success: function (layero) {
+          layero.find('.layui-layer-content').css('color', 'red');
+        }
+      });
+    } else {
+      if (callback) {
+        callback(response);
+      }
+    }
+  }
+
   // 统一处理AJAX错误
-  function handleAjaxError(xhr, status, error) {
+  function handleAjaxError(xhr, status, error, url) {
     switch (xhr.status) {
       case 403:
-        console.error('请求失败: 403 Forbidden');
+        // 未授权
         window.location.href = ctx + '/error/403';
         break;
       case 404:
         console.error('请求失败: 404 Not Found');
-        break;
-      case 500:
-        console.error('请求失败: 500 Internal Server Error');
-        // 可以在这里添加具体的处理逻辑，例如显示服务器内部错误的提示
+        // 弹出右上角的提示框，1秒后自动消失
+        layer.msg(url + '接口不存在', {
+          icon: 7,
+          time: 1000,
+          offset: 'rt',
+          success: function (layero) {
+            // 调整图标的大小
+            layero.find('.layui-layer-content').css({
+              'color': '#FFA500'
+            });
+          }
+        });
         break;
       default:
         console.error('请求失败:', error);
